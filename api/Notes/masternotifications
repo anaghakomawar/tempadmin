@@ -1,0 +1,130 @@
+Schema : 
+-----------------------------------------------------------------------------------------------------
+{
+	_id			 : mongoose.Schema.Types.ObjectId,
+    templateType : String,	
+	templateName : String,
+	subject      : String,
+	content      : String,	
+    createdAt    : Date,
+}
+
+APIs :
+-----------------------------------------------------------------------------------------------------
+1. Insert new master notifications									- 
+2. Details of master notifications									- 
+3. List details of all the master notifications	    				- 
+4. Update master notifications details                      		- 
+5. Delete particular master notifications							- 
+6. Delete all the master notifications								- 
+
+-----------------------------------------------------------------------------------------------------
+								1. Insert new master notifications
+-----------------------------------------------------------------------------------------------------
+
+Method      : POST
+    
+URL         : /api/masternotifications
+
+Input       : 
+				{
+					templateType    : String,	
+                    templateName    : String,
+                    subject         : String,
+                    content         : String,	
+					createdBy		: String, // Either empty or _id of companysettings
+				}
+
+Output      : 
+				If successfully
+					{
+						message : "Master Notification Details Added",
+                        ID      : String
+					}
+
+-----------------------------------------------------------------------------------------------------
+								2. Details of master notification
+-----------------------------------------------------------------------------------------------------
+
+Method      : GET
+    
+URL         : /api/masternotifications/:role
+
+Input       : - NA-
+
+Output      : 
+				If successfully
+					{
+						role        : String,
+						createdAt	: Date,
+                        createdBy   : String,
+						_id         : String
+					} 
+					
+-----------------------------------------------------------------------------------------------------
+								3. List details of all the master notifications
+-----------------------------------------------------------------------------------------------------
+
+Method      : GET
+    
+URL         : /api/masternotifications/list
+
+Input       : - NA-
+
+Output      : 
+				If successfully
+					[
+						{
+                            role        : String,
+                            createdAt	: Date,
+                            createdBy   : String,
+                            _id         : String
+						}
+					]	 
+-----------------------------------------------------------------------------------------------------
+								4. Update master notifications details
+-----------------------------------------------------------------------------------------------------
+
+Method      : PUT
+    
+URL         : /api/masternotifications/
+
+Input       : 
+                {
+                    id      : String,
+                    role    : String,
+                }
+
+Output      : 
+				If successfully 
+					"Role Updated"	 
+				If not 
+					"Something went wrong."
+
+-----------------------------------------------------------------------------------------------------
+							5. Delete particular master notifications
+-----------------------------------------------------------------------------------------------------
+
+Method      : DELETE
+    
+URL         : /api/masternotifications/:roleID
+			
+Input       : - NA -
+				
+Output      : 
+				If successfully 
+					"Role deleted"
+
+-----------------------------------------------------------------------------------------------------
+							6. Delete all the master notifications
+-----------------------------------------------------------------------------------------------------
+
+Method      : DELETE
+    
+URL         : /api/masternotifications
+
+Input       : - NA -			
+
+Output      : 
+				If successfully 
+					"All Roles Deleted"
